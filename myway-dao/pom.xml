@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>myway</artifactId>
+        <groupId>cn.gelk</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>myway-dao</artifactId>
+    <packaging>jar</packaging>
+    <description>数据库交互模块，Mybatis的mapper.xml文件及Dao层的接口</description>
+    <name>myway-dao</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- dao模块依赖domain模块 -->
+        <dependency>
+            <groupId>cn.gelk</groupId>
+            <artifactId>myway-domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>

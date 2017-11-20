@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>mainpage</title>
+
+    <link href="/resource/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resource/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="/resource/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- iCheck -->
+    <link href="/resource/css/plugins/iCheck/custom.css" rel="stylesheet">
+
+    <!-- Sweet Alert -->
+    <link href="/resource/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+    <!-- Ladda style -->
+    <link href="/resource/css/plugins/ladda/ladda-themeless.min.css" rel="stylesheet">
+
+    <!-- FooTable -->
+    <link href="/resource/css/plugins/footable/footable.core.css" rel="stylesheet">
+
+    <!-- Datapicker -->
+    <link href="/resource/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+
+    <!-- SUMMERNOTE -->
+    <link href="/resource/css/plugins/summernote/summernote.css" rel="stylesheet">
+
+    <!-- Gallery -->
+    <link href="/resource/css/plugins/blueimp/css/blueimp-gallery.min.css" rel="stylesheet">
+
+    <!-- Steps -->
+    <link href="../resource/css/plugins/steps/jquery.steps.css" rel="stylesheet">
+
+    <!-- switchery -->
+    <link href="/resource/css/plugins/switchery/switchery.css" rel="stylesheet">
+
+    <!-- FileUpload -->
+    <link href="/resource/js/plugins/fileupload/css/jquery.fileupload.css" rel="stylesheet" type="text/css" />
+    <link href="/resource/js/plugins/fileupload/css/jquery.fileupload-ui.css" rel="stylesheet" type="text/css" />
+
+    <!-- Select2 -->
+    <link href="/resource/css/plugins/select2/select2.min.css" rel="stylesheet">
+
+    <link href="/resource/css/animate.css" rel="stylesheet">
+    <link href="/resource/css/style.css" rel="stylesheet">
+
+    <!-- customize scripts -->
+    <link href="/resource/css/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="/resource/img/Java_profile_small.png"/>
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">欢迎您，<span id="userName"> </span></strong>
+                                    </span>
+                                    <span class="text-muted text-xs block"><span id="userOrg"> </span> <b class="caret"></b></span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                               <!-- <li><a href="#">个人信息</a></li>
+                                <li><a href="#">消息提醒</a></li>
+                                <li><a href="#">操作日志</a></li>
+                                <li class="divider"></li>-->
+                                <li><a href="#" id="loginOutBtnPro">安全退出</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            MY
+                        </div>
+                    </li>
+                    <li class="active">
+                        <a data-pjax href="/pages/home.html" ><i class="fa fa-windows"></i> <span class="nav-label">主 页</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-folder"></i> <span class="nav-label">会员管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a  data-pjax href="/pages/member.html">会员管理</a></li>
+                            <!--<li><a href="#">Second Level Item</a></li>-->
+                            <!--<li><a href="#">Second Level Item</a></li>-->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-folder"></i> <span class="nav-label">zookeeper</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-folder"></i> <span class="nav-label">Redise</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-folder"></i> <span class="nav-label">Dubbo</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-folder"></i> <span class="nav-label">Apache Shiro</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-folder"></i> <span class="nav-label">MyBatis</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="#">Second Level Item</a></li>
+                            <li><a href="#">Second Level Item</a></li>
+                            <li><a href="#">Second Level Item</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-folder"></i> <span class="nav-label">MySql</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="#">Second Level Item</a></li>
+                            <li><a href="#">Second Level Item</a></li>
+                            <li><a href="#">Second Level Item</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                        <form role="search" class="navbar-form-custom" action="#">
+                            <div class="form-group">
+                                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">Spring MVC + Mybatis 简单测试.</span>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-bell"></i> <span class="label label-primary">2</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                            <span class="pull-right text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                            <span class="pull-right text-muted small">12 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a href="#">
+                                            <strong>查看更多消息</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" id="loginOutBtn">
+                                <i class="fa fa-sign-out"></i> 安全退出
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>Basic Form</h2>
+                    <!--<ol class="breadcrumb">
+                        <li>
+                            <a data-pjax href="/pages/home.html">主 页</a>
+                        </li>
+                        <li>
+                            <a>SecondCrumbs</a>
+                        </li>
+                        <li class="active">
+                            <strong>ThreadCrumbs</strong>
+                        </li>
+                    </ol>-->
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <!-- 内容 -->
+            <div class="pjax-container">
+
+            </div>
+
+            <div class="footer">
+                <div class="pull-right">
+                    当前版本 <strong>V1.0.2</strong>
+                </div>
+                <div>
+                    <strong>Copyright</strong> 你的公司 &copy; 2017-2020
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="/resource/js/jquery-2.1.1.js"></script>
+    <script src="/resource/js/bootstrap.min.js"></script>
+    <script src="/resource/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/resource/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/resource/js/inspinia.js"></script>
+    <script src="/resource/js/plugins/pace/pace.min.js"></script>
+
+    <!-- Toastr script -->
+    <script src="/resource/js/plugins/toastr/toastr.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="/resource/js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- Sweet alert -->
+    <script src="/resource/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Ladda -->
+    <script src="/resource/js/plugins/ladda/spin.min.js"></script>
+    <script src="/resource/js/plugins/ladda/ladda.min.js"></script>
+    <script src="/resource/js/plugins/ladda/ladda.jquery.min.js"></script>
+
+    <!-- FooTable -->
+    <script src="/resource/js/plugins/footable/footable.all.min.js"></script>
+
+    <!-- Datepicker -->
+    <script src="/resource/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+
+    <!-- SUMMERNOTE -->
+    <script src="/resource/js/plugins/summernote/summernote.min.js"></script>
+
+    <!-- Gallery -->
+    <script src="/resource/js/plugins/blueimp/jquery.blueimp-gallery.min.js"></script>
+
+    <!-- Steps -->
+    <script src="/resource/js/plugins/staps/jquery.steps.min.js"></script>
+
+    <!-- FileUpload -->
+    <script src="/resource/js/plugins/fileupload/js/load-image.all.min.js"></script>
+    <script src="/resource/js/plugins/fileupload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="/resource/js/plugins/fileupload/js/jquery.iframe-transport.js"></script>
+    <script src="/resource/js/plugins/fileupload/js/jquery.fileupload.js"></script>
+    <script src="/resource/js/plugins/fileupload/js/jquery.fileupload-ui.js"></script>
+
+    <!-- Select2 -->
+    <script src="/resource/js/plugins/select2/select2.full.min.js"></script>
+
+    <!-- Jquery Validate -->
+    <script src="/resource/js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="/resource/js/plugins/validate/messages_zh.js"></script>
+
+
+    <!-- TouchSpin -->
+    <script src="/resource/js/plugins/touchspin/jquery.bootstrap-touchspin.min.js"></script>
+
+    <!-- Clipboard -->
+    <script src="/resource/js/plugins/clipboard/clipboard.min.js"></script>
+
+    <!-- Jasny -->
+    <script src="/resource/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+
+    <!-- Switchery -->
+    <script src="/resource/js/plugins/switchery/switchery.js"></script>
+
+    <!-- pjax.js -->
+    <script src="/resource/js/jquery.pjax.js"></script>
+    <!-- common-utils.js -->
+    <script src="/resource/js/common-utils.js"></script>
+    <!-- cookie-utils.js -->
+    <script src="/resource/js/cookie-utils.js"></script>
+    <!-- 分页插件 -->
+    <script src="/resource/js/pagination.js"></script>
+    <!-- http封装 -->
+    <script src="/resource/js/request.js"></script>
+    <!-- 系统核心工具类方法 -->
+    <script src="/resource/js/tools.js"></script>
+
+    <!-- main.js -->
+    <script src="/resource/js/main/main.js"></script>
+</body>
+
+</html>

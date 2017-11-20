@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户查询界面</title>
+</head>
+<body>
+<div class="pjax-container">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="row">
+                        <form class="m-t" role="form" action="#">
+                            <table>
+                                <tr>
+                                    <td>
+                                        会员用户名：
+                                    </td>
+
+                                    <td>
+                                        <span id="editPhone">
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        会员姓名：
+                                    </td>
+
+                                    <td>
+                                         <span id="editmemberName">
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        会员等级：
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <select class="form-control" id="editgrade">
+                                                <option value="0">普通会员</option>
+                                                <option value="1">黄金会员</option>
+                                                <option value="2">黑金会员</option>
+                                            </select>
+
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+
+
+                                <tr>
+                                    <td>
+                                        电话号码：
+                                    </td>
+
+                                    <td>
+                                        <span id="editPhone1">
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        会员禁用：
+                                    </td>
+
+                                    <td>
+                                        <div class="form-group">
+                                            <select class="form-control" id="editstatus">
+                                                <option value="1">已启用</option>
+                                                <option value="0">已禁用</option>
+
+                                            </select>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        会员起始时间：
+                                    </td>
+                                    <td>
+                                        <div class="input-daterange" >
+                                            <input type="text" class="form-control"   id="editstartTime">
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+
+
+                                <tr>
+                                    <td>
+                                        会员终止时间：
+                                    </td>
+
+                                    <td>
+                                        <div class="input-daterange" >
+                                            <input type="text" class="form-control"   id="editendTime">
+                                        </div>
+
+                                    </td>
+
+                                    <td>
+                                        会员价格：
+                                    </td>
+
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"   id="editprice">
+                                        </div>
+                                    </td>
+
+
+
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>
+                                        备注：
+                                    </td>
+
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text"  id="editremark" class="form-control"/>
+                                        </div>
+                                    </td>
+
+
+
+                                </tr>
+
+                            </table>
+
+
+                            <button type="button" id="editmemberButtion" class="btn btn-primary block full-width m-b">保存并修改</button>
+
+                            <!-- <a href="#">
+                                 <small>忘记 密码?</small>
+                             </a>-->
+
+                            <!-- <p class="text-muted text-center">
+                                 <small>还没有注册?</small>
+                             </p>-->
+                            <!--<a class="btn btn-sm btn-white btn-block" href="register.html">注 册</a>-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+    <script src="/resource/js/home/editMember.js"></script>
+    </div>
+</body>
+</html>

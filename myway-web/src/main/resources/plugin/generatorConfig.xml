@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+    PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+    "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <!-- 通用mapper插件 -->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+            <property name="caseSensitive" value="false"/>
+        </plugin>
+        <!-- 数据库连接配置 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://rm-uf6gt0xu9pi2wc7zno.mysql.rds.aliyuncs.com:3306/finddiff"
+            userId="rds_001"
+            password="Rds@1234">
+        </jdbcConnection>
+        <!-- 生成实体类的配置 -->
+        <javaModelGenerator targetPackage="cn.gelk.domain" targetProject="E:\eclipseWorkSpace\myway\myway-domain\src\main\java"/>
+        <!-- 生成Mapper接口对应的XML文件 -->
+        <sqlMapGenerator targetPackage="mapper"  targetProject="E:\eclipseWorkSpace\myway\myway-web\src\main\resources"/>
+        <!-- 生成对应的接口文件，该接口会自动继承前面配置的通用Mapper接口 -->
+        <javaClientGenerator targetPackage="cn.gelk.dao" targetProject="E:\eclipseWorkSpace\myway\myway-dao\src\main\java" type="XMLMAPPER" />
+        <!-- 指定对应的表，如果tableName="%" 表示全部表都生成上面配置的对应的mybatis文件-->
+        <table tableName="t_sys_org" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

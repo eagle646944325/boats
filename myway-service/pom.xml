@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>myway</artifactId>
+        <groupId>cn.gelk</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>myway-service</artifactId>
+    <packaging>jar</packaging>
+    <description>业务模块，业务接口及其实现都放到这里，事务控制也是在Service中</description>
+    <name>myway-service</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- 依赖dao模块 由于maven传递依赖性，所以间接依赖domain模块-->
+        <dependency>
+            <groupId>cn.gelk</groupId>
+            <artifactId>myway-dao</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- 依赖utils模块 -->
+        <dependency>
+            <groupId>cn.gelk</groupId>
+            <artifactId>myway-utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>
