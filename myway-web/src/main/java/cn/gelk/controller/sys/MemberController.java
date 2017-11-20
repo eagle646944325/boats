@@ -53,6 +53,8 @@ public class MemberController extends BaseController {
      */
     @RequestMapping("/findMember")
     public ModelMap  findMember(String id) {
+
+        
         return successResult(memberService.selectTMemberById(id));
     }
 
