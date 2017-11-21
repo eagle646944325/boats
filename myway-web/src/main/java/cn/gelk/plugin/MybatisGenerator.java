@@ -1,10 +1,13 @@
 package cn.gelk.plugin;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.mybatis.generator.api.MyBatisGenerator;
+import org.mybatis.generator.api.ProgressCallback;
+import org.mybatis.generator.api.VerboseProgressCallback;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.exception.InvalidConfigurationException;
@@ -27,11 +30,39 @@ public class MybatisGenerator {
          *         因为 spring-mybatis.xml中已经配置了<property name="markerInterface" value="cn.gelk.markerInterface.MyBatisMapper" />
          *         MyBatisMapper 主要是相对原来的通用mapper里面多了批量插入、更新的接口
          */
-        List<String> warnings = new ArrayList<>();
-        ConfigurationParser cp = new ConfigurationParser(warnings);
-        Configuration config = cp.parseConfiguration(MybatisGenerator.class.getClassLoader().getResourceAsStream("plugin/generatorConfig.xml"));
-        DefaultShellCallback callback = new DefaultShellCallback(true);
-        MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
-        myBatisGenerator.generate(null);
+//        List<String> warnings = new ArrayList<>();
+//        ConfigurationParser cp = new ConfigurationParser(warnings);
+//        Configuration config = cp.parseConfiguration(MybatisGenerator.class.getClassLoader().getResourceAsStream("plugin/generatorConfig.xml"));
+//        DefaultShellCallback callback = new DefaultShellCallback(true);
+//        MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
+//        myBatisGenerator.generate(null);
+        shell();
+    }
+
+
+
+    private static void shell() {
+        List<String> warnings = new ArrayList<String>();
+        try {
+            String configFilePath = "E:\\wks\\myway\\boats\\myway-web\\src\\main\\resources\\plugin\\generatorConfig.xml";
+//                    .concat("/plugin/generatorConfig.xml");
+            System.out.println("加载配置文件===" + configFilePath);
+            boolean overwrite = true;
+            File configFile = new File(configFilePath);
+            ConfigurationParser cp = new ConfigurationParser(warnings);
+            Configuration config = cp.parseConfiguration(configFile);
+            DefaultShellCallback callback = new DefaultShellCallback(overwrite);
+            MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config,
+                    callback, warnings);
+            ProgressCallback progressCallback = new VerboseProgressCallback();
+            // myBatisGenerator.generate(null);
+            myBatisGenerator.generate(progressCallback);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        for (String warning : warnings) {
+            System.out.println(warning);
+        }
     }
 }

@@ -13,18 +13,18 @@
         </plugin>
         <!-- 数据库连接配置 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-            connectionURL="jdbc:mysql://rm-uf6gt0xu9pi2wc7zno.mysql.rds.aliyuncs.com:3306/finddiff"
-            userId="rds_001"
-            password="Rds@1234">
+            connectionURL="jdbc:mysql://211.103.141.183:3306/test"
+            userId="root"
+            password="yin2016;">
         </jdbcConnection>
         <!-- 生成实体类的配置 -->
-        <javaModelGenerator targetPackage="cn.gelk.domain" targetProject="E:\eclipseWorkSpace\myway\myway-domain\src\main\java"/>
+        <javaModelGenerator targetPackage="cn.gelk.domain" targetProject="E:\wks\myway\boats\myway-domain\src\main\java"/>
         <!-- 生成Mapper接口对应的XML文件 -->
-        <sqlMapGenerator targetPackage="mapper"  targetProject="E:\eclipseWorkSpace\myway\myway-web\src\main\resources"/>
+        <sqlMapGenerator targetPackage="mapper"  targetProject="E:\wks\myway\boats\myway-web\src\main\resources"/>
         <!-- 生成对应的接口文件，该接口会自动继承前面配置的通用Mapper接口 -->
-        <javaClientGenerator targetPackage="cn.gelk.dao" targetProject="E:\eclipseWorkSpace\myway\myway-dao\src\main\java" type="XMLMAPPER" />
+        <javaClientGenerator targetPackage="cn.gelk.dao" targetProject="E:\wks\myway\boats\myway-dao\src\main\java" type="XMLMAPPER" />
         <!-- 指定对应的表，如果tableName="%" 表示全部表都生成上面配置的对应的mybatis文件-->
-        <table tableName="t_sys_org" >
+        <table tableName="user_role" >
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
     </context>
