@@ -6,7 +6,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>myway-utils</module>
-    <module>myway-domain</module>
+    <!--<module>myway-domain</module>-->
     <module>myway-dao</module>
     <module>myway-service</module>
     <module>myway-web</module>
