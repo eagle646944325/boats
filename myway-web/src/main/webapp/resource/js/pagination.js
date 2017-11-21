@@ -318,18 +318,12 @@ PageUtils.prototype.loadPage = function (page, loadUrl, paramData, successCalbac
     setTimeout(this.loadData, 0);// 延迟处理AJAX请求
 };
 
-
-
-
-
-
 PageUtils.prototype.ajaxRequest = function ( loadUrl, paramData, successCalback, errorCallback, removeIfEmpty) {
 
 
     this.loadData = function () {
         //调用封装ajax
         http.post(loadUrl, paramData, function (response) {
-            debugger;
             // 处理超时重定向
             if (tools.processTimeout(response)) {
                 return;
@@ -347,9 +341,6 @@ PageUtils.prototype.ajaxRequest = function ( loadUrl, paramData, successCalback,
             if (successCalback) {
                 successCalback.apply(this, [response]);
             }
-
-            // 更新分页条信息
-            thisPageUtil.updatePagebar(response['data'], loadPageFunction, thisPageUtil, [loadUrl, paramData, successCalback, errorCallback, removeIfEmpty]);
         }, function (response) {
             response = response || arguments[0];
             // 处理超时重定向
