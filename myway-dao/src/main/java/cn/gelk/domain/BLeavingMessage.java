@@ -1,10 +1,11 @@
 package cn.gelk.domain;
 
+import cn.gelk.domain.base.BaseDomain;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "b_leaving_message")
-public class BLeavingMessage {
+public class BLeavingMessage extends BaseDomain {
     /**
      * 留言ID
      */

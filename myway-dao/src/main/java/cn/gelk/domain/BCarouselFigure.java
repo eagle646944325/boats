@@ -1,10 +1,11 @@
 package cn.gelk.domain;
 
+import cn.gelk.domain.base.BaseDomain;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "b_carousel_figure")
-public class BCarouselFigure {
+public class BCarouselFigure extends BaseDomain {
     /**
      * id
      */
