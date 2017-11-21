@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gelk.dao.BCarouselFigureMapper">
+  <resultMap id="BaseResultMap" type="cn.gelk.domain.BCarouselFigure">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="figure_title" jdbcType="VARCHAR" property="figureTitle" />
+    <result column="image_id" jdbcType="VARCHAR" property="imageId" />
+    <result column="figure_type" jdbcType="VARCHAR" property="figureType" />
+    <result column="crate_time" jdbcType="TIMESTAMP" property="crateTime" />
+    <result column="figure_url" jdbcType="VARCHAR" property="figureUrl" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+  </resultMap>
+</mapper>
