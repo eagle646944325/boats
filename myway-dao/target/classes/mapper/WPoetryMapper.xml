@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gelk.dao.WPoetryMapper">
+  <resultMap id="BaseResultMap" type="cn.gelk.domain.WPoetry">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="context" jdbcType="VARCHAR" property="context" />
+    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+    <result column="wexplain" jdbcType="VARCHAR" property="wexplain" />
+    <result column="translation" jdbcType="VARCHAR" property="translation" />
+    <result column="appreciation" jdbcType="VARCHAR" property="appreciation" />
+    <result column="review" jdbcType="VARCHAR" property="review" />
+    <result column="dynasty" jdbcType="VARCHAR" property="dynasty" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="background_image_id" jdbcType="VARCHAR" property="backgroundImageId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+
+  </resultMap>
+</mapper>

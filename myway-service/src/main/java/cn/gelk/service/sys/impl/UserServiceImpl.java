@@ -13,6 +13,9 @@ import tk.mybatis.mapper.entity.Example;
 @Service
 public class UserServiceImpl implements UserService {
 
+    /**
+     *
+     */
     @Resource
     private TSysUserMapper tSysUserMapper;
 

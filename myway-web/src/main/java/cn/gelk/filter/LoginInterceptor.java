@@ -93,6 +93,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 				}
 			}
 		}
+		if(requestURI.contains("api")){
+			return true;
+		}
 		if (checkLogin(request, requestURI)) // 已经登录
 		{
 			return true;
