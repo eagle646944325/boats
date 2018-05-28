@@ -25,8 +25,26 @@ public class WPoetry extends BaseDomain {
     private String appreciation;
     @Column(name = "review")
     private String review;
-    @Column(name = "dynasty")
-    private String dynasty;
+
+    @Column(name = "poetry_order")
+    private String poetryOrder;
+
+    @Column(name = "out_poetry_id")
+    private String outPoetryId;
+
+    @Column(name = "out_authorid")
+    private String outAuthorId;
+
+    @Column(name = "primary")
+    private String primary;
+
+    @Column(name = "intermediate")
+    private String intermediate;
+
+    @Column(name = "senior")
+    private String senior;
+
+
     @Column(name = "author")
     private String author;
     @Column(name = "background_image_id")
@@ -36,6 +54,9 @@ public class WPoetry extends BaseDomain {
 
     @Column(name = "state")
     private String state;
+
+    @Column(name = "tryout")
+    private String tryout;
 
     public String getState() {
         return state;
@@ -75,9 +96,7 @@ public class WPoetry extends BaseDomain {
         this.review = review;
     }
 
-    public void setDynasty(String dynasty) {
-        this.dynasty = dynasty;
-    }
+
 
     public void setAuthor(String author) {
         this.author = author;
@@ -127,9 +146,6 @@ public class WPoetry extends BaseDomain {
         return review;
     }
 
-    public String getDynasty() {
-        return dynasty;
-    }
 
     public String getAuthor() {
         return author;
@@ -141,5 +157,61 @@ public class WPoetry extends BaseDomain {
 
     public Date getCreateTime() {
         return createTime;
+    }
+
+    public String getPoetryOrder() {
+        return poetryOrder;
+    }
+
+    public void setPoetryOrder(String poetryOrder) {
+        this.poetryOrder = poetryOrder;
+    }
+
+    public String getOutPoetryId() {
+        return outPoetryId;
+    }
+
+    public void setOutPoetryId(String outPoetryId) {
+        this.outPoetryId = outPoetryId;
+    }
+
+    public String getOutAuthorId() {
+        return outAuthorId;
+    }
+
+    public void setOutAuthorId(String outAuthorId) {
+        this.outAuthorId = outAuthorId;
+    }
+
+    public String getPrimary() {
+        return primary;
+    }
+
+    public void setPrimary(String primary) {
+        this.primary = primary;
+    }
+
+    public String getIntermediate() {
+        return intermediate;
+    }
+
+    public void setIntermediate(String intermediate) {
+        this.intermediate = intermediate;
+    }
+
+    public String getSenior() {
+        return senior;
+    }
+
+    public void setSenior(String senior) {
+        this.senior = senior;
+    }
+
+    public String getTryout() {
+        return tryout;
+    }
+
+    public void setTryout(String tryout) {
+        this.tryout = tryout;
     }
 }

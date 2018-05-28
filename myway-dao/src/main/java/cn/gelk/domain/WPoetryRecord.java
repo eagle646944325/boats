@@ -5,7 +5,7 @@ import cn.gelk.domain.base.BaseDomain;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "w_poetry_collection")
+@Table(name = "w_poetry_record")
 public class WPoetryRecord extends BaseDomain {
     @Id
     @Column(name = "id")
