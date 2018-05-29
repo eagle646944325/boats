@@ -32,10 +32,10 @@ public class WPoetry extends BaseDomain {
     @Column(name = "out_poetry_id")
     private String outPoetryId;
 
-    @Column(name = "out_authorid")
+    @Column(name = "out_author_id")
     private String outAuthorId;
 
-    @Column(name = "primary")
+    @Column(name = "primary1")
     private String primary;
 
     @Column(name = "intermediate")
@@ -57,6 +57,9 @@ public class WPoetry extends BaseDomain {
 
     @Column(name = "tryout")
     private String tryout;
+
+
+
 
     public String getState() {
         return state;

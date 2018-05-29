@@ -2,10 +2,7 @@ package cn.gelk.service.sys.impl;
 
 import cn.gelk.dao.TSysRoleMapper;
 import cn.gelk.dao.WPoetryMapper;
-import cn.gelk.domain.TSysOrg;
-import cn.gelk.domain.TSysRole;
-import cn.gelk.domain.TSysUser;
-import cn.gelk.domain.WPoetry;
+import cn.gelk.domain.*;
 import cn.gelk.service.sys.*;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -30,5 +27,12 @@ public class WPoetryServiceImpl implements WPoetryService {
     @Override
     public List<WPoetry> getPoetryAll() {
         return wPoetryMapper.selectAll();
+    }
+
+    @Override
+    public List<WPoetry> selectPoetryByThemeId(String themeId) {
+        WTheme theme=new WTheme();
+        theme.setId(Integer.valueOf(themeId));
+        return wPoetryMapper.selectPoetryByThemeId(theme);
     }
 }

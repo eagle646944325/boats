@@ -12,8 +12,8 @@ public class WPoetryCollection extends BaseDomain {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    @Column(name = "account_no")
+    private String accountNo;
 
     @Column(name = "poetry_id")
     private Integer poetryId;
@@ -32,13 +32,6 @@ public class WPoetryCollection extends BaseDomain {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
 
     public Integer getPoetryId() {
         return poetryId;
@@ -62,5 +55,13 @@ public class WPoetryCollection extends BaseDomain {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getAccountNo() {
+        return accountNo;
+    }
+
+    public void setAccountNo(String accountNo) {
+        this.accountNo = accountNo;
     }
 }

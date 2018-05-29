@@ -17,4 +17,6 @@ public interface WPoetryService {
     WPoetry getPoetryInfoById(WPoetry wPoetry);
 
     List<WPoetry> getPoetryAll();
+
+    List<WPoetry> selectPoetryByThemeId(String themeId);
 }

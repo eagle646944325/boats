@@ -12,6 +12,8 @@
     <result column="read_days" jdbcType="INTEGER" property="readDays" />
     <result column="level" jdbcType="VARCHAR" property="level" />
     <result column="expiration_date" jdbcType="TIMESTAMP" property="expirationDate" />
-    <result column="state" jdbcType="SMALLINT" property="state" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="difficulty" jdbcType="VARCHAR" property="difficulty" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
   </resultMap>
 </mapper>

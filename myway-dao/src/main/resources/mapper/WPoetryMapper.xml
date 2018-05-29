@@ -21,11 +21,26 @@
 
     <result column="out_poetry_id" jdbcType="VARCHAR" property="outPoetryId" />
     <result column="out_author_id" jdbcType="VARCHAR" property="outAuthorId" />
-    <result column="primary" jdbcType="VARCHAR" property="primary" />
+    <result column="primary1" jdbcType="VARCHAR" property="primary" />
     <result column="intermediate" jdbcType="VARCHAR" property="intermediate" />
     <result column="senior" jdbcType="VARCHAR" property="senior" />
     <result column="tryout" jdbcType="VARCHAR" property="tryout" />
 
 
   </resultMap>
+
+  <select id="selectPoetryByThemeId" parameterType="WTheme" resultType="WPoetry">
+     SELECT * FROM w_poetry t WHERE out_poetry_id IN (
+
+    SELECT  poetry_id FROM w_theme_poetry p WHERE theme_id=#{id}
+    )
+  </select>
+
+
+
+  <select id="selectCollection" parameterType="WPoetryCollection" resultType="WPoetry">
+   SELECT * FROM w_poetry  WHERE id IN(
+    SELECT poetry_id FROM w_poetry_collection WHERE account_no=#{accountNo}
+    )
+  </select>
 </mapper>

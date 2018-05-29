@@ -34,6 +34,27 @@ public class WUser extends BaseDomain {
     @Column(name = "state")
     private String state;
 
+    @Column(name = "difficulty")
+    private String difficulty;
+
+    @Column(name = "integral")
+    private Integer integral;
+
+    public Integer getIntegral() {
+        return integral;
+    }
+
+    public void setIntegral(Integer integral) {
+        this.integral = integral;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
 
     public Integer getId() {
         return id;

@@ -2,15 +2,9 @@ package cn.gelk.controller.wutong;
 
 import cn.gelk.bo.WThemeBo;
 import cn.gelk.controller.BaseController;
-import cn.gelk.domain.TSysUser;
-import cn.gelk.domain.WPoetry;
-import cn.gelk.domain.WPoetryCollection;
-import cn.gelk.domain.WTheme;
+import cn.gelk.domain.*;
 import cn.gelk.property.Constants;
-import cn.gelk.service.sys.SysService;
-import cn.gelk.service.sys.WPoetryCollectionService;
-import cn.gelk.service.sys.WPoetryService;
-import cn.gelk.service.sys.WThemeService;
+import cn.gelk.service.sys.*;
 import cn.gelk.utils.MD5Util;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -26,6 +20,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,6 +39,8 @@ public class ApiWuTongController extends BaseController {
     private WPoetryCollectionService wPoetryCollectionService;
     @Resource
     private WThemeService wThemeService;
+    @Resource
+    private WUserService wUserService;
 
     /**
      * 1、请求诗信息信息（首页或者详情页）
@@ -57,10 +54,15 @@ public class ApiWuTongController extends BaseController {
 
         WPoetry wPoetry=new WPoetry();
         wPoetry.setId(Integer.valueOf(poetryId));
-        wPoetry= wPoetryService.getPoetryInfoById(wPoetry);
+        try{
+            wPoetry= wPoetryService.getPoetryInfoById(wPoetry);
+        }catch(Exception e){
+            return failureResult("古诗不存在");
+        }
+
         return successResult(wPoetry);
     }
-
+/*****************************************收藏列表API接口**************************************************************************/
     /**
      * 收藏
      * @param poetryId
@@ -72,11 +74,43 @@ public class ApiWuTongController extends BaseController {
     public ModelMap collection(String  poetryId,String userId) {
         WPoetryCollection wPoetryCollection=new WPoetryCollection();
         wPoetryCollection.setPoetryId(Integer.valueOf(poetryId));
-        wPoetryCollection.setUserId(Integer.valueOf(userId));
+        wPoetryCollection.setAccountNo(userId);
+        wPoetryCollection.setCreateTime(new Date());
         wPoetryCollectionService.insertWPoetryCollection(wPoetryCollection);
         return successResult();
     }
 
+    /**
+     * 取消收藏
+     * @param poetryId
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/poetry/cancelCollection")
+    @ResponseBody
+    public ModelMap cancelCollection(String  poetryId,String userId) {
+        WPoetryCollection wPoetryCollection=new WPoetryCollection();
+        wPoetryCollection.setPoetryId(Integer.valueOf(poetryId));
+        wPoetryCollection.setAccountNo(userId);
+        wPoetryCollectionService.deleteCollection(wPoetryCollection);
+        return successResult();
+    }
+
+
+    /**
+     * 收藏列表
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/poetry/selectCollection")
+    @ResponseBody
+    public ModelMap selectCollection(String userId) {
+        WPoetryCollection wPoetryCollection=new WPoetryCollection();
+        wPoetryCollection.setAccountNo(userId);
+        List<WPoetry> list=wPoetryCollectionService.selectCollection(wPoetryCollection);
+        return successResult(list);
+    }
+/*****************************************收藏列表API接口**************************************************************************/
     /**
      * 4、全部诗词
      * @return
@@ -87,7 +121,7 @@ public class ApiWuTongController extends BaseController {
     List<WPoetry> wPoetry= wPoetryService.getPoetryAll();
         return successResult(wPoetry);
     }
-
+/*****************************************主题API接口**************************************************************************/
     /**
      * 4，全部诗词-主题
      * @return
@@ -133,6 +167,109 @@ public class ApiWuTongController extends BaseController {
         return successResult(wThemeBo);
     }
 
+    /**
+     * 4，全部诗词-主题-查询主题信息
+     * @return
+     */
+    @RequestMapping("/theme/poetry")
+    @ResponseBody
+    public ModelMap getThemePoetry(String userId,String themeId) {
+     List<WPoetry> list=wPoetryService.selectPoetryByThemeId(themeId);
+        return successResult(list);
+    }
 
+/*****************************************主题API接口**************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /***************************用户接口*******************************************************************/
+    /**
+     * 9，上传用户信息
+     * @return
+     */
+    @RequestMapping("/user/upload")
+    @ResponseBody
+    public ModelMap userUpload(String userId,String userName) {
+        WUser wUser=new WUser();
+        wUser.setAccountNo(userId);
+        WUser wUser1=  wUserService.selectWuser(wUser);
+        if(wUser1!=null){
+            wUser1.setName(userName);
+            wUserService.updateWuser(wUser1);
+        }else{
+            wUser.setName(userName);
+            wUserService.saveWuser(wUser);
+        }
+        return successResult();
+    }
+
+
+    /**
+     * 用户选择难度
+     * @return
+     */
+    @RequestMapping("/user/difficulty")
+    @ResponseBody
+    public ModelMap userDifficulty(String userId,String difficulty) {
+        WUser wUser=new WUser();
+        wUser.setAccountNo(userId);
+        WUser wUser1=  wUserService.selectWuser(wUser);
+        if(wUser1!=null){
+            wUser1.setDifficulty(difficulty);
+            wUserService.updateWuser(wUser1);
+        }else{
+            return failureResult("用户不存在");
+        }
+        return successResult();
+    }
+
+    /**
+     * 用户读取天数+1
+     * @return
+     */
+    @RequestMapping("/user/readDay")
+    @ResponseBody
+    public ModelMap userreadDay(String userId) {
+        WUser wUser=new WUser();
+        wUser.setAccountNo(userId);
+        WUser wUser1=  wUserService.selectWuser(wUser);
+        if(wUser1!=null){
+            if(StringUtils.isNotEmpty(wUser1.getReadDays()+"")){
+                wUser1.setReadDays(wUser1.getReadDays()+1);
+            }else{
+                wUser1.setReadDays(1);
+            }
+
+            wUserService.updateWuser(wUser1);
+        }else{
+            return failureResult("用户不存在");
+        }
+        return successResult();
+    }
+
+
+    /**
+     * 9，查询用户信息
+     * @return
+     */
+    @RequestMapping("/user/info")
+    @ResponseBody
+    public ModelMap userInfo(String userId) {
+        WUser wUser=new WUser();
+        wUser.setAccountNo(userId);
+        WUser wUser1=  wUserService.selectWuser(wUser);
+        return successResult(wUser1);
+    }
+    /***************************用户接口*******************************************************************/
 
 }
