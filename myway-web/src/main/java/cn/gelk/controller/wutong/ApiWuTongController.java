@@ -3,41 +3,22 @@ package cn.gelk.controller.wutong;
 import cn.gelk.bo.WThemeBo;
 import cn.gelk.controller.BaseController;
 import cn.gelk.domain.*;
-import cn.gelk.property.Constants;
 import cn.gelk.service.sys.*;
 import cn.gelk.utils.AesCbcUtil;
 import cn.gelk.utils.HttpClientUtils;
-import cn.gelk.utils.MD5Util;
-import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.codehaus.xfire.util.Base64;
 
-import java.io.UnsupportedEncodingException;
-import java.security.AlgorithmParameters;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.Security;
-import java.security.spec.InvalidParameterSpecException;
+
 import java.util.*;
 
 
