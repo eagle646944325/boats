@@ -16,7 +16,7 @@ public class WUser extends BaseDomain {
     private String accountNo;
 
     @Column(name = "photo")
-    private Integer photo;
+    private String  photo;
 
     @Column(name = "name")
     private String name;
@@ -72,11 +72,11 @@ public class WUser extends BaseDomain {
         this.accountNo = accountNo;
     }
 
-    public Integer getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Integer photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 

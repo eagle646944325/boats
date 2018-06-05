@@ -18,6 +18,9 @@
             <artifactId>myway-service</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+
+
     </dependencies>
     <build>
         <finalName>myway-web</finalName>

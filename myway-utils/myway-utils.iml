@@ -5,7 +5,7 @@
       <configuration />
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -15,6 +15,19 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.codehaus.xfire:xfire-core:1.2.6" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.mail:mail:1.4" level="project" />
+    <orderEntry type="library" name="Maven: wsdl4j:wsdl4j:1.6.1" level="project" />
+    <orderEntry type="library" name="Maven: jaxen:jaxen:1.1-beta-9" level="project" />
+    <orderEntry type="library" name="Maven: xerces:xmlParserAPIs:2.6.2" level="project" />
+    <orderEntry type="library" name="Maven: xerces:xercesImpl:2.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.ws.commons:XmlSchema:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.woodstox:wstx-asl:3.2.0" level="project" />
+    <orderEntry type="library" name="Maven: jdom:jdom:1.0" level="project" />
+    <orderEntry type="library" name="Maven: commons-httpclient:commons-httpclient:3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk16:1.46" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk14:1.50" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:4.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: taglibs:standard:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
@@ -70,7 +83,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:jconsole:1.8.0">
         <CLASSES>
-          <root url="jar://C:/Program Files/Java/jdk1.8.0_131/lib/jconsole.jar!/" />
+          <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/lib/jconsole.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -79,7 +92,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:tools:1.8.0">
         <CLASSES>
-          <root url="jar://C:/Program Files/Java/jdk1.8.0_131/lib/tools.jar!/" />
+          <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -100,23 +113,11 @@
     <orderEntry type="library" name="Maven: org.apache.poi:poi-ooxml:3.16" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi-ooxml-schemas:3.16" level="project" />
     <orderEntry type="library" name="Maven: org.apache.xmlbeans:xmlbeans:2.6.0" level="project" />
+    <orderEntry type="library" name="Maven: stax:stax-api:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.github.virtuald:curvesapi:1.04" level="project" />
     <orderEntry type="library" name="Maven: cglib:cglib:3.2.5" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm:5.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.ant:ant:1.9.6" level="project" />
     <orderEntry type="library" name="Maven: org.apache.ant:ant-launcher:1.9.6" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.xfire:xfire-core:1.2.6" level="project" />
-    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
-    <orderEntry type="library" name="Maven: javax.mail:mail:1.4" level="project" />
-    <orderEntry type="library" name="Maven: wsdl4j:wsdl4j:1.6.1" level="project" />
-    <orderEntry type="library" name="Maven: jaxen:jaxen:1.1-beta-9" level="project" />
-    <orderEntry type="library" name="Maven: xerces:xmlParserAPIs:2.6.2" level="project" />
-    <orderEntry type="library" name="Maven: xerces:xercesImpl:2.6.2" level="project" />
-    <orderEntry type="library" name="Maven: stax:stax-api:1.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.ws.commons:XmlSchema:1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.woodstox:wstx-asl:3.2.0" level="project" />
-    <orderEntry type="library" name="Maven: jdom:jdom:1.0" level="project" />
-    <orderEntry type="library" name="Maven: commons-httpclient:commons-httpclient:3.0" level="project" />
-    <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk16:1.46" level="project" />
   </component>
 </module>
