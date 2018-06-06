@@ -6,6 +6,7 @@ import cn.gelk.domain.*;
 import cn.gelk.service.sys.*;
 import cn.gelk.utils.AesCbcUtil;
 import cn.gelk.utils.HttpClientUtils;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -313,55 +314,77 @@ public class ApiWuTongController extends BaseController {
      */
     @ResponseBody
     @RequestMapping(value = "/wx/decodeUserInfo", method = RequestMethod.POST)
-    public ModelMap decodeUserInfo(String encryptedData, String iv,  String session_key ) {
+    public ModelMap decodeUserInfo(String encryptedData, String iv,  String  code) {
+
+        System.out.println("encryptedData="+encryptedData);
+        System.out.println("iv="+iv);
+        System.out.println("code="+code);
 //
 //        Map map = new HashMap();
 
         //登录凭证不能为空
-//        if (code == null || code.length() == 0) {
-//            map.put("status", 0);
-//            map.put("msg", "code 不能为空");
-//            return map;
-//        }
-
+        if (code == null || code.length() == 0) {
+            return failureResult("code 不能为空");
+        }
+        //appid：wx1b2d0253b4402218
         //小程序唯一标识   (在微信小程序管理后台获取)
-//        String wxspAppid = "xxxxxxxxxxxxxx";
+        String wxspAppid = "wx1b2d0253b4402218";
 //        //小程序的 app secret (在微信小程序管理后台获取)
-//        String wxspSecret = "xxxxxxxxxxxxxx";
+//        secret：f070b57ad6103748267776b051bbcb11
+        String wxspSecret = "f070b57ad6103748267776b051bbcb11";
         //授权（必填）
-//        String grant_type = "authorization_code";
+        String grant_type = "authorization_code";
 
 
         //////////////// 1、向微信服务器 使用登录凭证 code 获取 session_key 和 openid ////////////////
         //请求参数
-//        String params = "appid=" + wxspAppid + "&secret=" + wxspSecret + "&js_code=" + code + "&grant_type=" + grant_type;
+        String params = "appid=" + wxspAppid + "&secret=" + wxspSecret + "&js_code=" + code + "&grant_type=" + grant_type;
 //        //发送请求
-//        String sr = HttpClientUtils.sendGet("https://api.weixin.qq.com/sns/jscode2session", params);
+        System.out.println("请求微信获取opendid入参"+"https://api.weixin.qq.com/sns/jscode2session?"+params);
+        String sr = HttpClientUtils.sendGet("https://api.weixin.qq.com/sns/jscode2session", params);
+        System.out.println("请求微信获取opendid出参"+sr);
 //        //解析相应内容（转换成json对象）
-//        JSONObject json = JSONObject.parseObject(sr);
+        JSONObject json = JSONObject.parseObject(sr);
 //        //获取会话密钥（session_key）
-//        String session_key = json.get("session_key").toString();
+        String session_key = json.get("session_key").toString();
 //        //用户的唯一标识（openid）
-//        String openid = (String) json.get("openid");
+        String openid = (String) json.get("openid");
 
         //////////////// 2、对encryptedData加密数据进行AES解密 ////////////////
         try {
+            System.out.println("开始解密入参");
             String result = AesCbcUtil.decrypt(encryptedData, session_key, iv, "UTF-8");
+            System.out.println("开始解密出参"+result);
             if (null != result && result.length() > 0) {
 //                map.put("status", 1);
 //                map.put("msg", "解密成功");
-                return successResult(result);
-//                JSONObject userInfoJSON = JSONObject.parseObject(result);
-//                Map userInfo = new HashMap();
-//                userInfo.put("openId", userInfoJSON.get("openId"));
-//                userInfo.put("nickName", userInfoJSON.get("nickName"));
-//                userInfo.put("gender", userInfoJSON.get("gender"));
-//                userInfo.put("city", userInfoJSON.get("city"));
-//                userInfo.put("province", userInfoJSON.get("province"));
-//                userInfo.put("country", userInfoJSON.get("country"));
-//                userInfo.put("avatarUrl", userInfoJSON.get("avatarUrl"));
-//                userInfo.put("unionId", userInfoJSON.get("unionId"));
-//                map.put("userInfo", userInfo);
+
+                JSONObject userInfoJSON = JSONObject.parseObject(result);
+                Map userInfo = new HashMap();
+                userInfo.put("openId", userInfoJSON.get("openId"));
+                userInfo.put("nickName", userInfoJSON.get("nickName"));
+                userInfo.put("gender", userInfoJSON.get("gender"));
+                userInfo.put("city", userInfoJSON.get("city"));
+                userInfo.put("province", userInfoJSON.get("province"));
+                userInfo.put("country", userInfoJSON.get("country"));
+                userInfo.put("avatarUrl", userInfoJSON.get("avatarUrl"));
+                userInfo.put("unionId", userInfoJSON.get("unionId"));
+
+                WUser wUser=new WUser();
+                wUser.setAccountNo(openid);
+                WUser wUser1=  wUserService.selectWuser(wUser);
+                if(wUser1!=null){
+                    wUser1.setName(userInfoJSON.get("nickName")+"");
+                    wUserService.updateWuser(wUser1);
+                }else{
+                    wUser.setName(userInfoJSON.get("nickName")+"");
+                    wUser.setPhoto(userInfoJSON.get("avatarUrl")+"");
+                    wUserService.saveWuser(wUser);
+                }
+
+
+
+                return successResult(userInfo);
 //                return map;
             }
         } catch (Exception e) {
@@ -373,5 +396,14 @@ public class ApiWuTongController extends BaseController {
     }
 
     /****************************************************微信小程序获取登陆信息 end********************************/
+    @RequestMapping("/poetry/record")
+    @ResponseBody
+    public ModelMap record(String userId) {
+
+        return successResult();
+    }
+
+    /****************************************************微信小程序获取登陆信息 end********************************/
+
 
 }
