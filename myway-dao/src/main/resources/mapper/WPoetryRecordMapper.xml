@@ -6,10 +6,25 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="poetry_id" jdbcType="INTEGER" property="poetryId" />
-    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="score" jdbcType="VARCHAR" property="score" />
     <result column="state" jdbcType="VARCHAR" property="state" />
     <result column="read_date" jdbcType="TIMESTAMP" property="readDate" />
   </resultMap>
+
+
+  <select id="selectWPoetryRecordBydate" parameterType="WPoetryRecord" resultType="WPoetryRecord" >
+
+    SELECT id,user_id,poetry_id,score,read_date FROM w_poetry_record
+     where DATE_FORMAT(read_date, '%Y-%m-%d') =DATE_FORMAT(#{readDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') and user_id=#{userId}
+
+  </select>
+
+
+  <select id="selectWPoetryRecord" parameterType="WPoetryRecord" resultType="java.util.HashMap" >
+    SELECT t.name as name ,t.poetry_order as poetryOrder,t.author,p.`read_date`as readDate ,p.`score` FROM w_poetry t,w_poetry_record p WHERE p.poetry_id=t.id AND p.user_id=#{userId}
+    ORDER BY p.read_date DESC
+  </select>
+
 </mapper>

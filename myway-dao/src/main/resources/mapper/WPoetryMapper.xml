@@ -43,4 +43,11 @@
     SELECT poetry_id FROM w_poetry_collection WHERE account_no=#{accountNo}
     )
   </select>
+
+
+  <select id="selectPoetryrecord" parameterType="WPoetryRecord" resultType="WPoetry">
+      SELECT * FROM w_poetry WHERE id NOT  IN (
+          SELECT poetry_id FROM  w_poetry_record where user_id=#{userId}
+        )
+  </select>
 </mapper>

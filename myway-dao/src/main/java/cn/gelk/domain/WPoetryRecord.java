@@ -13,13 +13,13 @@ public class WPoetryRecord extends BaseDomain {
     private Integer id;
 
     @Column(name = "user_id")
-    private Integer userId;
+    private String userId;
 
     @Column(name = "poetry_id")
     private Integer poetryId;
 
     @Column(name = "score")
-    private Integer score;
+    private String score;
 
 
     @Column(name = "state")
@@ -36,11 +36,11 @@ public class WPoetryRecord extends BaseDomain {
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -52,11 +52,11 @@ public class WPoetryRecord extends BaseDomain {
         this.poetryId = poetryId;
     }
 
-    public Integer getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(Integer score) {
+    public void setScore(String score) {
         this.score = score;
     }
 

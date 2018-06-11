@@ -35,4 +35,10 @@ public class WPoetryServiceImpl implements WPoetryService {
         theme.setId(Integer.valueOf(themeId));
         return wPoetryMapper.selectPoetryByThemeId(theme);
     }
+
+    @Override
+    public List<WPoetry> selectPoetryrecord(WPoetryRecord wPoetryRecord) {
+        List<WPoetry> list=wPoetryMapper.selectPoetryrecord(wPoetryRecord);
+        return list;
+    }
 }

@@ -1,5 +1,6 @@
 package cn.gelk.controller.wutong;
 
+import cn.gelk.bo.WPoetryRecordBo;
 import cn.gelk.bo.WThemeBo;
 import cn.gelk.controller.BaseController;
 import cn.gelk.domain.*;
@@ -41,7 +42,10 @@ public class ApiWuTongController extends BaseController {
     private WThemeService wThemeService;
     @Resource
     private WUserService wUserService;
-
+    @Resource
+    private WPoetryRecordService wPoetryRecordService;
+    @Resource
+    private WPoetryProblemService wPoetryProblemService;
     /**
      * 1、请求诗信息信息（首页或者详情页）
      * @param poetryId
@@ -399,11 +403,77 @@ public class ApiWuTongController extends BaseController {
     @RequestMapping("/poetry/record")
     @ResponseBody
     public ModelMap record(String userId) {
-
-        return successResult();
+        WPoetryRecordBo    wPoetryRecordBo=new  WPoetryRecordBo();
+        WPoetryRecord wPoetryRecord=new WPoetryRecord();
+        //查询当前是否打卡
+        wPoetryRecord.setReadDate(new Date());
+        wPoetryRecord.setUserId(userId);
+        WPoetryRecord wPoetryRecord1=new WPoetryRecord();
+        wPoetryRecord1=   wPoetryRecordService.selectWPoetryRecordBydate(wPoetryRecord);
+        if(wPoetryRecord1==null){
+            List<WPoetry>    wPoetry=  wPoetryService.selectPoetryrecord(wPoetryRecord);
+            WPoetry wPoetry1=(WPoetry) getRandomList(wPoetry,1).get(0);
+            wPoetryRecord.setPoetryId(wPoetry1.getId());
+            int i=wPoetryRecordService.insertPoetryRecord(wPoetryRecord);
+            BeanUtils.copyProperties(wPoetry1,wPoetryRecordBo);
+            return successResult(wPoetryRecordBo);
+        }else{
+            System.out.println(wPoetryRecord1.getPoetryId());
+            WPoetry wPoetry=new WPoetry();
+            wPoetry.setId(wPoetryRecord1.getPoetryId());
+            WPoetry wPoetry1 = wPoetryService.getPoetryInfoById(wPoetry);
+            BeanUtils.copyProperties(wPoetry1,wPoetryRecordBo);
+            return successResult(wPoetryRecordBo);
+        }
     }
 
-    /****************************************************微信小程序获取登陆信息 end********************************/
 
+    @RequestMapping("/poetry/problem")
+    @ResponseBody
+    public ModelMap problem(String userId,String poetryId) {
+        WPoetry wPoetry=new WPoetry();
+        wPoetry.setId(Integer.valueOf(poetryId));
+        List<WPoetryProblem> list=wPoetryProblemService.selectByPoetryId(wPoetry);
+        if(list==null||list.size()<=0){
+            return failureResult("查询为题为空");
+        }
+        return successResult(getRandomList(list,5));
+    }
+
+    @RequestMapping("/poetry/recordList")
+    @ResponseBody
+    public ModelMap recordList(String userId) {
+        WPoetryRecord wPoetryRecord=new WPoetryRecord();
+        wPoetryRecord.setUserId(userId);
+        List<Map> list = wPoetryRecordService.selectWPoetryRecord(wPoetryRecord);
+        return successResult(list) ;
+    }
+
+
+
+
+
+
+    /****************************************************微信小程序获取登陆信息 end********************************/
+    public static List getRandomList(List paramList,int count){
+        if(paramList.size()<count){
+            return paramList;
+        }
+        Random random=new Random();
+        List<Integer> tempList=new ArrayList<Integer>();
+        List<Object> newList=new ArrayList<Object>();
+        int temp=0;
+        for(int i=0;i<count;i++){
+            temp=random.nextInt(paramList.size());//将产生的随机数作为被抽list的索引
+            if(!tempList.contains(temp)){
+                tempList.add(temp);
+                newList.add(paramList.get(temp));
+            }
+            else{
+                i--;
+            }
+        }
+        return newList;
+    }
 
 }

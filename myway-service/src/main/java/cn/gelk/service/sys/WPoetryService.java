@@ -1,9 +1,6 @@
 package cn.gelk.service.sys;
 
-import cn.gelk.domain.TSysOrg;
-import cn.gelk.domain.TSysRole;
-import cn.gelk.domain.TSysUser;
-import cn.gelk.domain.WPoetry;
+import cn.gelk.domain.*;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -19,4 +16,8 @@ public interface WPoetryService {
     List<WPoetry> getPoetryAll();
 
     List<WPoetry> selectPoetryByThemeId(String themeId);
+
+    List<WPoetry> selectPoetryrecord(WPoetryRecord wPoetryRecord);
+
+
 }
