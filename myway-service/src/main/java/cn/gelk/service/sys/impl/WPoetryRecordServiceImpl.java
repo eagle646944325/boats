@@ -38,4 +38,9 @@ public class WPoetryRecordServiceImpl implements WPoetryRecordService {
     public List<Map> selectWPoetryRecord(WPoetryRecord wPoetryRecord) {
         return wPoetryRecordMapper.selectWPoetryRecord(wPoetryRecord);
     }
+
+    @Override
+    public void update(WPoetryRecord wPoetryRecord) {
+        wPoetryRecordMapper.updateByPrimaryKey(wPoetryRecord);
+    }
 }

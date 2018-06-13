@@ -450,6 +450,19 @@ public class ApiWuTongController extends BaseController {
     }
 
 
+    @RequestMapping("/poetry/recordScore")
+    @ResponseBody
+    public ModelMap recordScore(String userId,String score) {
+        WPoetryRecord wPoetryRecord=new WPoetryRecord();
+        wPoetryRecord.setReadDate(new Date());
+        wPoetryRecord.setUserId(userId);
+        WPoetryRecord wPoetryRecord1=new WPoetryRecord();
+        wPoetryRecord1=   wPoetryRecordService.selectWPoetryRecordBydate(wPoetryRecord);
+        wPoetryRecord1.setScore(score);
+        wPoetryRecordService.update(wPoetryRecord1);
+        return successResult() ;
+    }
+
 
 
 

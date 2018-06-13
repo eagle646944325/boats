@@ -17,4 +17,6 @@ public interface WPoetryRecordService {
     int insertPoetryRecord(WPoetryRecord wPoetryRecord);
 
     List<Map> selectWPoetryRecord(WPoetryRecord wPoetryRecord);
+
+    void update(WPoetryRecord wPoetryRecord1);
 }
